@@ -1,0 +1,102 @@
+﻿
+    @Html.DropDownList("Title", new List<SelectListItem>
+  {
+      new SelectListItem { Text = "MovieId", Value = "1" },
+      new SelectListItem { Text = "Title", Value = "2", Selected = true },
+      new SelectListItem { Text = "like", Value = "3" },
+      new SelectListItem { Text = "Genre", Value = "4" },
+      new SelectListItem { Text = "WatchedOn", Value = "5" },
+      new SelectListItem { Text = "Location", Value = "6" },
+      new SelectListItem { Text = "Note", Value = "7" }
+  }, "Select Search Field", "Database field");
+
+    <h2>Session Location is: @HttpContext.Current.Session["Location"]</h2>
+
+    <h2>Message is: @HttpContext.Current.Application["Message"]</h2>
+
+    <h2>Application State Location is: @HttpContext.Current.Application["Location"]</h2>
+
+    @Html.TextBox("Search", "Title", "Search For");
+    <input type="submit" name="Search" />
+
+
+	<ul id="menu">
+    <li><div>MovieId</div></li>
+    <li><div>Title</div></li>
+    <li>
+        <div>like</div>
+        <ul>
+            <li><div>AbsolutelyHatedIt</div></li>
+            <li><div>Good</div></li>
+            <li><div>HatedIt</div></li>
+            <li><div>LovedIt</div></li>
+            <li><div>VeryGood</div></li>
+        </ul>
+    </li>
+    <li>
+        <div>Genre</div>
+        <ul>
+            <li><div>Action</div></li>
+            <li><div>Adventure</div></li>
+            <li><div>Animation</div></li>
+            <li><div>Comedy</div></li>
+            <li><div>Drama</div></li>
+            <li><div>Fantasy</div></li>
+            <li><div>Horror</div></li>
+            <li><div>Mystery</div></li>
+            <li><div>ScienceFiction</div></li>
+            <li><div>Thriller</div></li>
+        </ul>
+    </li>
+    <li><div>WatchedOn</div></li>
+    <li><div>Location</div>
+        <ul>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Blueray</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Dvd</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Internet</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Theatre</div></li>
+        </ul></li>
+    <li><div>Notes</div></li>
+</ul>
+
+
+
+
+<ul id="menu">
+    <li><div>MovieId</div></li>
+    <li><div>Title</div></li>
+    <li>
+        <div>like</div>
+        <ul>
+            <li><div>AbsolutelyHatedIt</div></li>
+            <li><div>Good</div></li>
+            <li><div>HatedIt</div></li>
+            <li><div>LovedIt</div></li>
+            <li><div>VeryGood</div></li>
+        </ul>
+    </li>
+    <li>
+        <div>Genre</div>
+        <ul>
+            <li><div>Action</div></li>
+            <li><div>Adventure</div></li>
+            <li><div>Animation</div></li>
+            <li><div>Comedy</div></li>
+            <li><div>Drama</div></li>
+            <li><div>Fantasy</div></li>
+            <li><div>Horror</div></li>
+            <li><div>Mystery</div></li>
+            <li><div>ScienceFiction</div></li>
+            <li><div>Thriller</div></li>
+        </ul>
+    </li>
+    <li><div>WatchedOn</div></li>
+    <li><div>Location</div>
+        <ul>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Blueray</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Dvd</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Internet</div></li>
+            <li><div>@MoviesWatchList.Models.Movie.Location.Theatre</div></li>
+        </ul></li>
+    <li><div>Notes</div></li>
+</ul>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -19,7 +20,11 @@ namespace MoviesWatchList.Controllers
 
         // GET: Movies
         public ActionResult Index(int? Title, string Search)
-        { 
+        {
+            ViewBag.like = Movie.Like.AbsolutelyHatedIt;
+
+            
+            
             switch (Title)
             {
                 case 1:
@@ -90,6 +95,16 @@ namespace MoviesWatchList.Controllers
             return View(movies);
         }
 
+        public string[] getquerystring()
+        {
+            var keys = Request.QueryString.AllKeys;
+            foreach (string key in keys)
+            {
+                Debug.WriteLine(key);
+            }
+            
+            return keys;
+        }
         
         public ActionResult Details(int? id)
         {

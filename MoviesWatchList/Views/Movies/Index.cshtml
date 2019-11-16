@@ -1,41 +1,73 @@
 ﻿@model IEnumerable<MoviesWatchList.Models.Movie>
-    @using System.Collections.Generic
-    @using System.Web.Mvc
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
+<ul id="menu">
+    <li><div>MovieId</div></li>
+    <li><div>Title</div></li>
+    <li>
+        <div>like</div>
+        <ul>
+            <li id="one"><div id="value1">@MoviesWatchList.Models.Movie.Like.AbsolutelyHatedIt</div></li>
+            <li id="two"><div>Good</div></li>
+            <li id="three"><div>HatedIt</div></li>
+            <li id="four"><div>LovedIt</div></li>
+            <li id="five"><div>VeryGood</div></li>
+        </ul>
+    </li>
+    <li>
+        <div>Genre</div>
+        <ul>
+            <li id="six"><div>Action</div></li>
+            <li id="seven"><div>Adventure</div></li>
+            <li id="eight"><div>Animation</div></li>
+            <li id="nine"><div>Comedy</div></li>
+            <li id="ten"><div>Drama</div></li>
+            <li id="eleven"><div>Fantasy</div></li>
+            <li id="twelve"><div>Horror</div></li>
+            <li id="thirteen"><div>Mystery</div></li>
+            <li id="fourteen"><div>ScienceFiction</div></li>
+            <li id="fifteen"><div>Thriller</div></li>
+        </ul>
+    </li>
+    <li><div>WatchedOn</div></li>
+    <li>
+        <div>Location</div>
+        <ul>
+            <li id="sixteen"><div>Blueray</div></li>
+            <li id="seventeen"><div>Dvd</div></li>
+            <li id="eighteen"><div>Internet</div></li>
+            <li id="nineteen"><div>Theatre</div></li>
+        </ul>
+    </li>
+    <li><div>Notes</div></li>
+</ul>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    @Html.TextBox("Search", "", new { placeholder = "Search criteria here"});
+    @Html.TextBox("Title", "");
+
+    <input type="submit" name="submit" value="submit" />
+}
+<h2 id="index">Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Movies", FormMethod.Get))
-{
-   
-  @Html.DropDownList("Title", new List<SelectListItem>
-{
-    new SelectListItem { Text = "MovieId", Value = "1" },
-    new SelectListItem { Text = "Title", Value = "2", Selected = true },
-    new SelectListItem { Text = "like", Value = "3" },
-    new SelectListItem { Text = "Genre", Value = "4" },
-    new SelectListItem { Text = "WatchedOn", Value = "5" },
-    new SelectListItem { Text = "Location", Value = "6" },
-    new SelectListItem { Text = "Note", Value = "7" }
-}, "Select Search Field", "Database field");
-
-    @Html.TextBox("Search", "Title", "Search For");
-    <input type="submit" name="Search" />
-}
 
 <table class="table table-condensed table-striped">
     <tr>
         <th>
+
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.like)
         </th>
@@ -54,32 +86,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.like)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WatchOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MovieId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MovieId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MovieId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.like)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WatchOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+            </td>
+        </tr>
+    }
 
-</table>
+</table> 
